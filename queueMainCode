@@ -1,0 +1,75 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main
+{
+
+
+    public static void main(String[] args)
+    {
+        //variables
+        Queue<String> queue = new Queue<>();
+        ArrayList<String> inputLines = new ArrayList<>();
+        String currentLine;
+
+
+
+        //create scanner to read file
+        Scanner s = new Scanner(System.in);
+
+        currentLine = s.nextLine();
+
+        inputLines.add(currentLine);
+
+        //store the data in arraylist
+        while(!currentLine.contains("***"))
+        {
+            currentLine = s.nextLine();
+            inputLines.add(currentLine);
+        }
+
+        //close scanner
+        s.close();
+
+
+
+
+
+        //go through each line in the arraylist and do the correct action
+        for(String line: inputLines)
+        {
+
+            if(line.contains("ENQUEUE"))
+            {
+                //isolate the data from the input line
+                String data = line.replace("ENQUEUE ", "");
+
+                //add the data to the queue
+                queue.enQueue(data);
+            }
+            else if(line.contains("DEQUEUE"))
+            {
+                //pop
+                queue.deQueue();
+            }
+            else if(line.contains("CLEAR"))
+            {
+                //clear the stack
+                queue.clear();
+            }
+            else if(line.contains("PRINT"))
+            {
+                //print the stack
+                queue.printAllNodes();
+            }
+
+        }
+
+
+
+
+    }
+
+
+
+}
